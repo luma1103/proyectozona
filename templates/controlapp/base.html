@@ -36,13 +36,25 @@
 
     {% if user.is_authenticated %}
     <div>
-         
+
      </div>
     {% else %}
-      <img src="static/images/Sala-de-computacion.jpg" style="width:100%">
-      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-        <a href="/" class="w3-button w3-green"><i class="fa fa-calendar-o"></i> Actividades</a>
+    <div class="w3-green" id="nuevolab">
+      <div class="w3-container w3-content w3-padding-64" style="max-width:1000px">
+        <br><br><br><br><br><br><br><br><br><h2 class="w3-wide w3-center"> UNIVERSIDAD MESOAMERICANA </h2>
+        <p class="w3-opacity w3-center"><i> control de actividades </i></p><br><br><br>
+
+        <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+          <div class="w3-half w3-margin-bottom">
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
+
     {% endif %}
      <div class="misinputs">
        {% block content %}

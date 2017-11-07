@@ -46,15 +46,20 @@ def post_detail(request, pk):
 @login_required
 def post_edit(request):
     post = get_object_or_404(Laboratorio, pk=pk)
+    formulario = LaboratorioForm()
     if request.method == "POST":
-        form = LaboratorioForm(request.POST, instace=laboratorio)
-        if form.is_valid():
-            laboratorio = form.save(commit = False)
+        formulario = LaboratorioForm(request.POST, instance=laboratorio)
+        if formulario.is_valid():
+            laboratorio = formulario.save(commit=False)
+            for evento_id in request.POST.getlist('eventos'):
+                registro = Registro(evento_id=evento_id, laboratorio_id = laboratorio.id)
+                registro.save(commit=False)
             laboratorio.save()
-            return redirect('post_edit', pk=laboratorio.pk)
-    else:
-        form = LaboratorioForm(instace=laboratorio)
-    return render(request, 'controlapp/post_edit.html', {'form':form})
+            messages.add_message(request, messages.SUCCESS, 'registro editado')
+        else:
+            formulario = LaboratorioForm(instance=laboratorio)
+    return render(request, 'controlapp/post_edit.html', {'formulario': formulario})
+
 
 @login_required
 def post_delete(request, pk):
