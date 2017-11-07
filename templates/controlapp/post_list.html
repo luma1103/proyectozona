@@ -1,0 +1,39 @@
+{% extends 'controlapp/base.html' %}
+
+    {% block content %}
+
+
+  <div class="w3-yellow" id="list">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
+      <h2 class="w3-wide w3-center">ACTIVIDADES</h2>
+      <p class="w3-opacity w3-center"><i>laboratorios</i></p><br>
+      {% if messages %}
+       <ul class="messages">
+           {% for message in messages %}
+           <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+           {% endfor %}
+       </ul>
+       {% endif %}
+ {% for laboratorio in laboratorios %}
+      <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+        <div class="w3-third w3-margin-bottom">
+          <div class="w3-container w3-white">
+            <p><b>{{ laboratorio.encargados }}</b></p>
+            <p class="w3-opacity">Martes 7 de Noviembre de 2017</p>
+            <p>Haga clic en el boton para obtener detalles</p>
+            <a href="{% url 'post_detail' pk=laboratorio.pk %}" class="w3-button w3-green w3-margin-bottom"><i class="fa fa-calendar-o"></i> {{ laboratorio.nombre }}</a>
+            <!--<button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+            -->
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+    <div>
+      <p></p>
+
+
+    </div>
+
+    {% endblock %}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Actividades Laboratorios</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/control.css" %}">
+    <link rel="stylesheet" href="{% static "imges" %}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style >
+      body {font-family: "Lato", sans-serif}
+      .mySlides{display: none}
+    </style>
+  </head>
+  <body>
+    <div class="w3-top">
+      <div class="w3-bar w3-black w3-card">
+          {% if user.is_authenticated %}
+          <a href="/" class="w3-button w3-bar-item w3-padding-large"><i class="fa fa-calendar-o"></i> Actividades</a>
+          <a href="{% url 'lab_nuevo' %}" class="w3-button w3-bar-item w3-padding-large"><i class="fa fa-plus"></i> Nuevo Laboratorio</a>
+          <a href="{% url 'evento_nuevo' %}" class="w3-button w3-bar-item w3-padding-large"><i class="fa fa-calendar-plus-o"></i> Nuevo Evento</a>
+          <a class="w3-button w3-bar-item w3-padding-large"><i class="fa fa-user-o"> Bienvenida  </i>{{ user.username }}</a>
+          <a href="{% url 'logout' %}" class="w3-button w3-bar-item w3-padding-large w3-right"><i class="fa fa-sign-out"></i> Cerrar Sesion</a>
+          {% else %}
+          <a href="/" class="w3-button w3-bar-item w3-padding-large"><i class="fa fa-calendar-o"></i> Actividades</a>
+          <a href="{% url 'login' %}" class="w3-button w3-bar-item w3-padding-large w3-right"><i class="fa fa-sign-in"></i> Iniciar Sesion</a>
+          {% endif %}
+      </div>
+    </div>
+
+
+
+    {% if user.is_authenticated %}
+    <div>
+         
+     </div>
+    {% else %}
+      <img src="static/images/Sala-de-computacion.jpg" style="width:100%">
+      <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+        <a href="/" class="w3-button w3-green"><i class="fa fa-calendar-o"></i> Actividades</a>
+    </div>
+    {% endif %}
+     <div class="misinputs">
+       {% block content %}
+       {% endblock %}
+     </div>
+     <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+       <i class="fa fa-facebook-official w3-hover-opacity"></i>
+       <i class="fa fa-instagram w3-hover-opacity"></i>
+       <i class="fa fa-snapchat w3-hover-opacity"></i>
+       <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+       <i class="fa fa-twitter w3-hover-opacity"></i>
+       <i class="fa fa-linkedin w3-hover-opacity"></i>
+       <p class="w3-medium">Luz Maria Morales<a href="https://www.w3schools.com/w3css/default.asp" target="_blank"></a></p>
+     </footer>
+  </body>
+</html>

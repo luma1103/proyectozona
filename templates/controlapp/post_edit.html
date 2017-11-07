@@ -1,0 +1,18 @@
+{% extends 'controlapp/base.html' %}
+
+    {% block content %}
+
+    {% if messages %}
+     <ul class="messages">
+         {% for message in messages %}
+         <li{% if message.tags %} class="{{ message.tags }} w3-tag w3-red w3-margin-left"{% endif %}>{{ message }}</li>
+         {% endfor %}
+     </ul>
+     {% endif %}
+        <h1>New post</h1>
+        <form class="" method="POST">{% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit" class="w3-btn w3-green w3-round-xlarge">Guardar</button>
+        </form>
+
+    {% endblock %}

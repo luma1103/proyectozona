@@ -1,0 +1,45 @@
+{% extends 'controlapp/base.html' %}
+
+    {% block content %}
+    <div class="w3-blue" id="detalle">
+      <div class="w3-container w3-content w3-padding-64" style="max-width:1000px">
+        <h2 class="w3-wide w3-center">{{laboratorio.nombre}}</h2>
+        <p class="w3-opacity w3-center"><i>{{laboratorio.encargado}}</i></p><br>
+        {% if messages %}
+         <ul class="messages">
+             {% for message in messages %}
+             <li{% if message.tags %} class="{{ message.tags }} w3-tag w3-red w3-margin-left"{% endif %}>{{ message }}</li>
+             {% endfor %}
+         </ul>
+         {% endif %}
+        <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
+          <div class="w3-half w3-margin-bottom">
+            <div class="w3-container w3-gray">
+              <div>
+                {% if laboratorio.created_date %}
+
+                  <div>
+                    {{laboratorio.created_date}}
+
+                {% endif %}
+                </div>
+                <h1>{{laboratorio.eventos}}</h1>
+                <a href="{% url 'post_edit' pk=laboratorio.pk %}" class="w3-button w3-green w3-margin-bottom w3-right"><i class="fa fa-pencil"></i></a>
+                <a href="{% url 'post_delete' pk=laboratorio.pk %}" class="w3-button w3-red w3-margin-bottom w3-right"><i class="fa fa-trash"></i></a>
+                <p></p>
+                <p></p>
+
+              </div>
+
+              <!--<button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+              -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+    {% endblock %}

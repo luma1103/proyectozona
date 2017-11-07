@@ -1,0 +1,21 @@
+.misinputs input
+{
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 8px;
+  display: block;
+  border-bottom: 1px solid #818181;
+  background-color: #f1f1f1 !important;
+  border-radius: 50px;
+}
+.misinputs select
+{
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 8px;
+  display: block;
+  border-bottom: 1px solid #818181;
+  background-color: #f1f1f1 !important;
+}
